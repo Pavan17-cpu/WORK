@@ -14,7 +14,7 @@ const WorksList = () => {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/works');
+        const response = await axios.get('https://work16.onrender.com/api/works');
         setWorks(response.data);
       } catch (error) {
         console.error('Failed to retrieve works:', error);
@@ -26,7 +26,7 @@ const WorksList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/works/${id}`);
+      await axios.delete(`https://work16.onrender.com/api/works/${id}`);
       setWorks(works.filter((work) => work._id !== id));
       console.log('Work deleted:', id);
     } catch (error) {
@@ -54,7 +54,7 @@ const WorksList = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`http://localhost:3000/api/works/${selectedWork._id}`, updateWorkData);
+      const response = await axios.put(`https://work16.onrender.com/api/works/${selectedWork._id}`, updateWorkData);
       console.log('Work updated:', response.data);
 
       // Update the works list with the updated work data
