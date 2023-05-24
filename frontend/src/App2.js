@@ -11,7 +11,7 @@ const App2 = () => {
     e.preventDefault();
 
     // Check if username and password match the credentials
-    if (username === 'work' && password === 'work') {
+    if (username === 'work' && password === 'work16') {
       // Redirect to another page on successful login
       navigate('/addwork');
     } else {
