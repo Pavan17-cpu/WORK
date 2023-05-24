@@ -14,7 +14,7 @@ const AddWorkForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/api/works', {
+      const response = await axios.post('https://work16.onrender.com/api/works', {
         workName,
         endTime,
         type,
@@ -33,7 +33,7 @@ const AddWorkForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'yellow', minHeight: '100vh' }}>
     <form className="add-work-form" onSubmit={handleSubmit}>
       <label htmlFor="workName">Work Name:</label>
       <input
