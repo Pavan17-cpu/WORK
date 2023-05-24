@@ -1,0 +1,32 @@
+.add-work-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .add-work-form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .add-work-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .add-work-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-work-form button[type='button'] {
+    background-color: #ccc;
+  }
+  
+  
