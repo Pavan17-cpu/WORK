@@ -33,7 +33,7 @@ const AddWorkForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'yellow', minHeight: '100vh' }}>
+    
     <form className="add-work-form" onSubmit={handleSubmit}>
       <label htmlFor="workName">Work Name:</label>
       <input
@@ -67,7 +67,7 @@ const AddWorkForm = () => {
         Go to Works List
       </button>
     </form>
-    </div>
+
   );
 };
 
