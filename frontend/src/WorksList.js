@@ -89,7 +89,7 @@ const WorksList = () => {
   const sortedWorks = works.sort((a, b) => new Date(a.endTime) - new Date(b.endTime));
 
   return (
-    <div style={{ backgroundColor: 'red', minHeight: '100vh' }}>
+    
     <div style={{ textAlign: 'center' }}>
       <Link to="/addwork">
         <button style={{ padding: '10px 20px', backgroundColor: '#4caf50', color: '#fff', border: 'none', cursor: 'pointer' }}>
@@ -166,7 +166,7 @@ const WorksList = () => {
         </div>
       )}
     </div>
-    </div>
+    
   );
 };
 
