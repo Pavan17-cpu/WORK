@@ -26,7 +26,7 @@ db.once('open', () => {
 
 // API endpoints
 app.post('/api/works', async (req, res) => {
- try {
+  try {
     const { workName, endTime, type } = req.body;
 
     // Convert the endTime to a JavaScript Date object
