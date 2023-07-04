@@ -13,10 +13,18 @@ const AddWorkForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Convert the current date and time to Indian Standard Time (IST)
+    const indianStandardTime = currentDate.toLocaleString('en-US', {
+      timeZone: 'Asia/Kolkata',
+    });
+
     try {
       const response = await axios.post('https://work16.onrender.com/api/works', {
         workName,
-        endTime,
+        endTime: indianStandardTime, // Use IST for the endTime
         type,
       });
       console.log('Work added:', response.data);
@@ -33,7 +41,6 @@ const AddWorkForm = () => {
   };
 
   return (
-    
     <form className="add-work-form" onSubmit={handleSubmit}>
       <label htmlFor="workName">Work Name:</label>
       <input
@@ -67,7 +74,6 @@ const AddWorkForm = () => {
         Go to Works List
       </button>
     </form>
-
   );
 };
 
