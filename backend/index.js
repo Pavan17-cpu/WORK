@@ -26,10 +26,22 @@ db.once('open', () => {
 
 // API endpoints
 app.post('/api/works', async (req, res) => {
-  try {
-    const work = new Work(req.body);
-    await work.save();
+ try {
+    const { workName, endTime, type } = req.body;
 
+    // Convert the endTime to a JavaScript Date object
+    const endTimeUtc = new Date(endTime);
+
+    // Convert the endTime to Indian Standard Time (IST)
+    const endTimeIST = new Date(endTimeUtc.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+
+    const work = new Work({
+      workName,
+      endTime: endTimeIST, // Store endTimeIST in the database
+      type,
+    });
+
+    await work.save();
     // Send immediate email notification
     sendNotificationEmail(work);
 
