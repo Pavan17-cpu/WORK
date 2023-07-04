@@ -29,11 +29,8 @@ app.post('/api/works', async (req, res) => {
   try {
     const { workName, endTime, type } = req.body;
 
-    // Convert the endTime to a JavaScript Date object
-    const endTimeUtc = new Date(endTime);
-
     // Convert the endTime to Indian Standard Time (IST)
-    const endTimeIST = new Date(endTimeUtc.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    const endTimeIST = new Date(endTime + ' GMT+0530');
 
     const work = new Work({
       workName,
@@ -42,6 +39,7 @@ app.post('/api/works', async (req, res) => {
     });
 
     await work.save();
+  
     // Send immediate email notification
     sendNotificationEmail(work);
 
