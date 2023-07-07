@@ -25,12 +25,17 @@ const WorksList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`https://work16.onrender.com/api/works/${id}`);
-      setWorks(works.filter((work) => work._id !== id));
-      console.log('Work deleted:', id);
-    } catch (error) {
-      console.error('Failed to delete work:', error);
+    const inputValue = prompt("Enter the value:");
+    if (inputValue === "009") {
+      try {
+        await axios.delete(`https://work16.onrender.com/api/works/${id}`);
+        setWorks(works.filter((work) => work._id !== id));
+        console.log('Work deleted:', id);
+      } catch (error) {
+        console.error('Failed to delete work:', error);
+      }
+    } else {
+      alert("Delete is only possible with the value '009'.");
     }
   };
 
@@ -46,7 +51,7 @@ const WorksList = () => {
     if (inputValue === "009") {
       // Enable the update functionality
     } else {
-      alert("Update or edit is only possible with admin access.");
+      alert("Update or edit is only possible with the value '009'.");
     }
   };
 
@@ -83,7 +88,7 @@ const WorksList = () => {
         console.error('Failed to update work:', error);
       }
     } else {
-      alert("Update or edit is only possible with admin access'.");
+      alert("Update or edit is only possible with the value '009'.");
     }
   };
 
