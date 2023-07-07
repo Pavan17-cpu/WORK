@@ -35,7 +35,7 @@ const WorksList = () => {
         console.error('Failed to delete work:', error);
       }
     } else {
-      alert("Delete is only possible with the value '009'.");
+      alert("Delete is only possible with admin access.");
     }
   };
 
@@ -51,7 +51,7 @@ const WorksList = () => {
     if (inputValue === "009") {
       // Enable the update functionality
     } else {
-      alert("Update or edit is only possible with the value '009'.");
+      alert("Update or edit is only possible with the value admin access.");
     }
   };
 
@@ -88,7 +88,7 @@ const WorksList = () => {
         console.error('Failed to update work:', error);
       }
     } else {
-      alert("Update or edit is only possible with the value '009'.");
+      alert("Update or edit is only possible with admin access.");
     }
   };
 
