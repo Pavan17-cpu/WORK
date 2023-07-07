@@ -41,6 +41,13 @@ const WorksList = () => {
       endTime: work.endTime,
       type: work.type,
     });
+
+    const inputValue = prompt("Enter the value:");
+    if (inputValue === "009") {
+      // Enable the update functionality
+    } else {
+      alert("Update or edit is only possible with admin access.");
+    }
   };
 
   const handleInputChange = (e) => {
@@ -53,25 +60,30 @@ const WorksList = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.put(`https://work16.onrender.com/api/works/${selectedWork._id}`, updateWorkData);
-      console.log('Work updated:', response.data);
+    const inputValue = prompt("Enter the value:");
+    if (inputValue === "009") {
+      try {
+        const response = await axios.put(`https://work16.onrender.com/api/works/${selectedWork._id}`, updateWorkData);
+        console.log('Work updated:', response.data);
 
-      // Update the works list with the updated work data
-      const updatedWorks = works.map((work) =>
-        work._id === selectedWork._id ? response.data.work : work
-      );
-      setWorks(updatedWorks);
+        // Update the works list with the updated work data
+        const updatedWorks = works.map((work) =>
+          work._id === selectedWork._id ? response.data.work : work
+        );
+        setWorks(updatedWorks);
 
-      // Reset the selected work and update data
-      setSelectedWork(null);
-      setUpdateWorkData({
-        workName: '',
-        endTime: '',
-        type: '',
-      });
-    } catch (error) {
-      console.error('Failed to update work:', error);
+        // Reset the selected work and update data
+        setSelectedWork(null);
+        setUpdateWorkData({
+          workName: '',
+          endTime: '',
+          type: '',
+        });
+      } catch (error) {
+        console.error('Failed to update work:', error);
+      }
+    } else {
+      alert("Update or edit is only possible with admin access'.");
     }
   };
 
@@ -89,7 +101,6 @@ const WorksList = () => {
   const sortedWorks = works.sort((a, b) => new Date(a.endTime) - new Date(b.endTime));
 
   return (
-    
     <div style={{ textAlign: 'center' }}>
       <Link to="/addwork">
         <button style={{ padding: '10px 20px', backgroundColor: '#4caf50', color: '#fff', border: 'none', cursor: 'pointer' }}>
@@ -125,10 +136,10 @@ const WorksList = () => {
       {/* Modal for updating work */}
       {selectedWork && (
         <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f2f2f2', border: '1px solid #ccc' }}>
-        <h3 style={{ color: '#333', fontSize: '1.5rem', marginBottom: '10px' }}>Update Work</h3>
+          <h3 style={{ color: '#333', fontSize: '1.5rem', marginBottom: '10px' }}>Update Work</h3>
           <form onSubmit={handleFormSubmit}>
             <div>
-            <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Work Name:</label>
+              <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Work Name:</label>
               <input
                 type="text"
                 name="workName"
@@ -137,9 +148,9 @@ const WorksList = () => {
                 style={{ padding: '8px' }}
               />
             </div>
-            <br/>
+            <br />
             <div>
-            <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>End Time:</label>
+              <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>End Time:</label>
               <input
                 type="text"
                 name="endTime"
@@ -148,9 +159,9 @@ const WorksList = () => {
                 style={{ padding: '8px' }}
               />
             </div>
-            <br/>
+            <br />
             <div>
-            <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Type:</label>
+              <label htmlFor="workName" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Type:</label>
               <input
                 type="text"
                 name="type"
@@ -158,15 +169,13 @@ const WorksList = () => {
                 onChange={handleInputChange}
                 style={{ padding: '8px' }}
               />
-            
             </div>
-            <br/>
+            <br />
             <button type="submit">Update</button>
           </form>
         </div>
       )}
     </div>
-    
   );
 };
 
